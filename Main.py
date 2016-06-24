@@ -60,6 +60,6 @@ print me,med,s,variance,mn,mx
 x_axis = np.arange(mn-2, mx+2, 0.001)
 # Mean = 0, SD = 2.
 # plt.plot(x_axis, norm.pdf(x_axis,me,s))
-plt.plot(seq[1:],gausian[1:],'ro')
+plt.plot(seq[1:],gausian[1:],'*')
 plt.axis([mn, mx, 0, 10])
 plt.show()
