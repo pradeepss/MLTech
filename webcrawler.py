@@ -121,6 +121,10 @@
 
 import requests
 from bs4 import BeautifulSoup
+from pyrui import RUI
+
+RUI('https://testautomation.apple.com', auth=("pradeep_sharma","Prashi33"))
+
 
 # def Hparse(url):
 r = requests.get("http://gibson.apple.com/ctbot103_14A294a.html")
@@ -133,14 +137,20 @@ for link in soup.find_all('a'):
         links.append(link.get('href'))
 # print links
 
-for i in range(len(links)):
-    r1 = requests.get(links[i])
-    soup1 = BeautifulSoup(r1.content, "html.parser")
-    # print links[i]
-    g_data = soup1.find_all("div", {"class": "panel panel-info"})
-    print g_data
+# for i in range(len(links)):
+#     r1 = requests.get(links[i])
+#     s1 = BeautifulSoup(r1.content, "html.parser")
+#     print s1
+#     print links[i]
+#     g_data = s1.find_all("div", {"class": "panel panel-info"})
+#     print g_data
 
-
+print links[0]
+r1 = requests.get("https://purplebot.apple.com/testruns/CallControl_Call_BBresetinCall")
+s1 = BeautifulSoup(r1.content, "html.parser")
+print s1
+g_data = s1.find_all("div", {"class": "panel panel-info"})
+print g_data
 
 
 
