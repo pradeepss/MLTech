@@ -122,38 +122,49 @@
 import requests
 from bs4 import BeautifulSoup
 from pyrui import RUI
+import re
 
-RUI('https://testautomation.apple.com', auth=("pradeep_sharma","Prashi33"))
-
+# help(RUI)
+# rui = RUI('https://testautomation.apple.com', auth=("pradeep_sharma","Prashi33"))
+rui = RUI("https://testautomation.apple.com", auth=("pradeep_sharma","Prashi33"))
+result = rui.resultForUUID("2e5161c0-c9bf-401d-992e-3933720115b3")
+print result
+# http://gibson.apple.com/ctbot103_14A297_c7fd8793-302d-4a0f-87bd-66fa6840ec31.html
+# for a in result.attachments:
+#     print a.filename
+#     print a.url
 
 # def Hparse(url):
 r = requests.get("http://gibson.apple.com/ctbot103_14A294a.html")
 soup = BeautifulSoup(r.content, "html.parser")
-# print soup.prettify()
-# soup.find_all('a')
 links = []
 for link in soup.find_all('a'):
-    if "testautomation" in link.get("href"):
+    if "./ctbot" in link.get("href"):
         links.append(link.get('href'))
-# print links
 
-# for i in range(len(links)):
-#     r1 = requests.get(links[i])
-#     s1 = BeautifulSoup(r1.content, "html.parser")
-#     print s1
-#     print links[i]
-#     g_data = s1.find_all("div", {"class": "panel panel-info"})
-#     print g_data
+nLink = []
+rui = RUI('https://testautomation.apple.com', auth=("pradeep_sharma","Prashi33"))
+for i in range(len(links)):
+    r1 = links[i]
+    s1 = re.split("[, _?.]+", r1)
+    nLink.append("https://testautomation.apple.com/results/testrun/" +str(s1[3])+ "/")
 
-print links[0]
-r1 = requests.get("https://purplebot.apple.com/testruns/CallControl_Call_BBresetinCall")
-s1 = BeautifulSoup(r1.content, "html.parser")
-print s1
-g_data = s1.find_all("div", {"class": "panel panel-info"})
-print g_data
+# print nLink
 
+flinks = []
+print "Link Parser"
+for i in range(len(nLink)):
+    print nLink[i]
+    rui = RUI(nLink[i], auth=("pradeep_sharma","Prashi33"))
+    r2 = requests.get(nLink[i])
+    print r2
+    s2 = BeautifulSoup(r2.content, "html.parser")
+    for link in s2.findAll('a'):
+        # if "/results/" in link.get("href"):
+        print link
+            # flinks.append(link.get('href'))
 
-
+print flinks
 
 
 

@@ -18,7 +18,8 @@ def get_filepaths(directory):
 
 # Run the above function and store its results in a variable.
 # full_file_paths = get_filepaths("/Users/ltecoex/Library/Logs/CrashReporter")
-full_file_paths = get_filepaths("/Volumes/buildbot/Logs/AWDLogs")
+# full_file_paths = get_filepaths("/Volumes/buildbot/Logs/AWDLogs")
+full_file_paths = get_filepaths("/Volumes/WAF_Logs/297")
 print full_file_paths
 # print len(full_file_paths)
 # i = 0
