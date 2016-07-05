@@ -7,19 +7,21 @@ def get_filepaths(directory):
 
     # Walk the tree.
     for root, directories, files in os.walk(directory):
+        # print directories
         for filename in files:
             # Join the two strings in order to form the full filepath.
-            if "metriclog.log" in filename:
+            if "metriclog" in filename:
                 filepath = os.path.join(root, filename)
                 file_paths.append(filepath)  # Add it to the list.
                 cmd = "AWDDisplay " + filepath + " > /users/ltecoex/Desktop/AWD/" + filename  +".txt"
                 subprocess.call(cmd, shell=True)
+                print filename
     return file_paths  # Self-explanatory.
 
 # Run the above function and store its results in a variable.
 # full_file_paths = get_filepaths("/Users/ltecoex/Library/Logs/CrashReporter")
 # full_file_paths = get_filepaths("/Volumes/buildbot/Logs/AWDLogs")
-full_file_paths = get_filepaths("/Volumes/WAF_Logs/297")
+full_file_paths = get_filepaths("/Volumes/buildslave/")
 print full_file_paths
 # print len(full_file_paths)
 # i = 0

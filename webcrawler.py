@@ -123,6 +123,8 @@ import requests
 from bs4 import BeautifulSoup
 from pyrui import RUI
 import re
+from HTMLParser import HTMLParser
+
 
 # help(RUI)
 # rui = RUI('https://testautomation.apple.com', auth=("pradeep_sharma","Prashi33"))
@@ -151,12 +153,30 @@ for i in range(len(links)):
 
 # print nLink
 
+
+
+###########
+
+#############
+
+
+
+
+
+
+
+
+
+
+
+
+
 flinks = []
 print "Link Parser"
 for i in range(len(nLink)):
     print nLink[i]
     rui = RUI(nLink[i], auth=("pradeep_sharma","Prashi33"))
-    r2 = requests.get(nLink[i])
+    r2 = rui.get(nLink[i])
     print r2
     s2 = BeautifulSoup(r2.content, "html.parser")
     for link in s2.findAll('a'):
