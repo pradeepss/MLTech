@@ -276,16 +276,42 @@ def downloadLogs(results, path='Log', filter='log'):
     print '%s Finish download %s\n' % ('='*25, '='*35)
 
 
+def get_filepaths(directory):
+    file_paths = []  # List which will store all of the full filepaths.
+
+    # Walk the tree.
+    for root, directories, files in os.walk(directory):
+        for filename in files:
+            # Join the two strings in order to form the full filepath.
+            filepath = os.path.join(root, filename)
+            file_paths.append(filepath)  # Add it to the list.
+            if "metriclog" in filename:
+                print('converting file')
+                cmd = "AWDDisplay " + filepath + " > /Volumes/Navjot/AWD/C09/Metric/" + filename  +".txt"
+                subprocess.call(cmd, shell=True)
+                print ('Deleting file' + filepath)
+                cmd = "rm -f " + filepath
+                subprocess.call(cmd, shell=True)
+            else:
+                print('Deleting file' + filepath)
+                cmd = "rm -f " + filepath
+                subprocess.call(cmd, shell=True)
+    return file_paths  # Self-explanatory.
+
+
 if __name__=='__main__':
-    # predicates = getPredicates(days=1, hostname='C09', failed=None)
-    # results = rui.resultsForPredicates(predicates)
-    # showStats(results)
-    # downloadLogs(results,path='/Volumes/Navjot/AWD/',filter='zip')
+    predicates = getPredicates(days=1, hostname='C09', failed=None)
+    results = rui.resultsForPredicates(predicates)
+    showStats(results)
+    downloadLogs(results,path='/Volumes/Navjot/AWD/',filter='zip')
 
     # extractMetricLogsFromArchive("/Volumes/Navjot/AWD/C09/Siri_utterances_garage_door_2016-08-02_16-41_20267", "/Volumes/Navjot/AWD/C09/Metric/")
     # read_zip_file('/Volumes/Navjot/AWD/C09/Home_sharing_admin_to_shared_user_while_remote_2016-08-02_03-40_11322.zip')
     zip = zipfile.ZipFile('/Volumes/Navjot/AWD/C09/Home_sharing_admin_to_shared_user_while_remote_2016-08-02_03-40_11322.zip')
-    zip.extractall("/Volumes/Navjot/AWD/C09/Metric/")
+    zip.extractall("/Volumes/Navjot/AWD/C09/tmp/")
+    full_file_paths = get_filepaths("/Volumes/Navjot/AWD/C09/tmp/")
+    cmd = 'rm -r /Volumes/Navjot/AWD/C09/tmp/'
+    subprocess.call(cmd, shell=True)
 
 
 
