@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3ca920ce-2f14-469d-a5ea-adda405cc43a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webcrawler.py" afterPath="$PROJECT_DIR$/webcrawler.py" />
     </list>
     <ignored path="MLTech.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,6 +75,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="pradeeps@apple.com" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="PUSH_TAGS">
       <GitPushTagMode />
@@ -792,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470253217030</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Just more test">
+      <created>1470687890840</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1470687890840</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -874,7 +885,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test" />
     <MESSAGE value="Just more test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Just more test" />
+    <MESSAGE value="Updated files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
